@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Oorja Styles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background: #0d0d0d;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .topbar {
+      width: 100%;
+      background: #111;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #222;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1100;
+    }
+
+    .topbar img {
+      height: 32px;
+      margin-right: 10px;
+    }
+
+    .topbar .brand {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ff3c38;
+      display: flex;
+      align-items: center;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      height: calc(100% - 60px);
+      width: 220px;
+      background: #111;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border-right: 1px solid #222;
+      z-index: 1000;
+    }
+
+    .sidebar a {
+      color: #ddd;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      color: #ff3c38;
+    }
+
+    .menu-toggle {
+      display: none;
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      z-index: 1200;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .topbar {
+        justify-content: flex-start;
+        gap: 10px;
+      }
+    }
+
+    main {
+      margin-left: 240px;
+      padding: 100px 40px 40px;
+      max-width: 900px;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        margin-left: 0;
+        padding: 120px 20px 40px;
+      }
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(to right, #ff3c38, #ff8e38);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      color: #ff3c38;
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 80px;
+      text-align: center;
+      color: #777;
+      font-size: 0.9rem;
+      padding: 60px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand">
+      <img src="https://via.placeholder.com/32x32?text=UT" alt="Logo">
+      UrbanThread
+    </div>
+  </div>
+
+  <div class="menu-toggle" onclick="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <nav class="sidebar" id="sidebar">
+    <a href="index.html">Home</a>
+    <a href="products.html">Collection</a>
+    <a href="about.html">About</a>
+    <a href="terms.html">Terms & Conditions</a>
+  </nav>
+
+  <main>
+    <h1>About Oorja Styles</h1>
+    <p>
+      <span class="highlight">Oorja Styles</span> is more than just a clothing brand — it's a movement. Rooted in bold self-expression and fueled by street culture, we create apparel that sparks your inner energy — your <em>Oorja</em>. Whether you're chasing dreams, breaking norms, or just vibing your way through life, our styles are crafted to match your hustle.
+    </p>
+    <p>
+      Built by young minds for a young generation, our collection blends comfort, uniqueness, and attitude — because we know you're not here to blend in.
+    </p>
+    <p>
+      From <strong>oversized tees</strong> and <strong>caps</strong> to <strong>hoodies</strong> that speak your mood, everything we design is made to help you <span class="highlight">wear your vibe</span>.
+    </p>
+    <p>
+      <strong>Join the tribe.</strong> Spark your Oorja.
+    </p>
+
+    <footer>
+      &copy; 2025 Oorja Styles. Designed for the bold.
+    </footer>
+  </main>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
