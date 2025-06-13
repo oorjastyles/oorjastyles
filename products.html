@@ -204,93 +204,71 @@
       }
     }
 
-    /* Popup Styles */
-    #buyPopup {
-      display: none;
+    /* POPUP STYLES */
+    .popup-overlay {
       position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(5px);
-      background-color: rgba(0, 0, 0, 0.6);
-      animation: fadeIn 0.3s ease;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(3px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
     }
 
-    .popup-content {
-      background: #181818;
-      color: white;
-      padding: 40px 30px;
+    .popup-box {
+      background: #1a1a1a;
+      padding: 30px 40px;
       border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-      width: 90%;
-      max-width: 400px;
-      margin: 10% auto;
       text-align: center;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      max-width: 320px;
+      width: 90%;
       position: relative;
-      animation: slideUp 0.3s ease;
+      color: white;
     }
 
-    .popup-close {
-      position: absolute;
-      top: 12px;
-      right: 16px;
-      font-size: 24px;
-      background: none;
-      border: none;
-      color: #aaa;
-      cursor: pointer;
-    }
-
-    .popup-content h2 {
+    .popup-box h2 {
+      margin-bottom: 12px;
       font-size: 1.8rem;
-      margin-bottom: 10px;
+      font-weight: 800;
     }
 
-    .popup-content p {
-      margin-bottom: 20px;
+    .popup-box p {
+      margin-bottom: 24px;
       font-size: 1rem;
       color: #ccc;
     }
 
-    .popup-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .popup-btn {
-      text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all 0.3s ease;
+    .popup-email-btn, .popup-insta-btn {
       display: block;
-    }
-
-    .popup-btn.email {
-      background: #ff3c38;
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
       color: white;
     }
 
-    .popup-btn.insta {
-      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-      color: white;
+    .popup-email-btn {
+      background: linear-gradient(135deg, #ff4b2b, #ff416c);
     }
 
-    .popup-btn:hover {
-      opacity: 0.9;
+    .popup-insta-btn {
+      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(40px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      font-size: 20px;
+      color: #fff;
+      cursor: pointer;
     }
   </style>
   <link rel="icon" href="/favicon.ico">
@@ -327,7 +305,7 @@
         <div class="product-details">
           <h3>Devilish Anime Graphic Tee</h3>
           <p>₹499</p>
-          <button onclick="showPopup()">Buy Now</button>
+          <button>Buy Now</button>
         </div>
       </div>
 
@@ -336,7 +314,7 @@
         <div class="product-details">
           <h3>Street Hoodie</h3>
           <p>₹1299</p>
-          <button onclick="showPopup()">Buy Now</button>
+          <button>Buy Now</button>
         </div>
       </div>
 
@@ -345,37 +323,35 @@
         <div class="product-details">
           <h3>Urban Cap</h3>
           <p>₹499</p>
-          <button onclick="showPopup()">Buy Now</button>
+          <button>Buy Now</button>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- Buy Now Popup -->
-  <div id="buyPopup">
-    <div class="popup-content">
-      <button class="popup-close" onclick="closePopup()">×</button>
+  <!-- Buy Popup -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup-box">
+      <span class="close-btn" onclick="closePopup()">×</span>
       <h2>Ready to Buy?</h2>
       <p>Choose how you'd like to contact us:</p>
-      <div class="popup-buttons">
-        <a href="mailto:oorja.styles@gmail.com" class="popup-btn email">Email</a>
-        <a href="https://instagram.com/oorjastyless.store" target="_blank" class="popup-btn insta">DM on Instagram</a>
-      </div>
+      <button class="popup-email-btn" onclick="location.href='mailto:oorja.styles@gmail.com'">Email</button>
+      <button class="popup-insta-btn" onclick="window.open('https://instagram.com/oorjastyless.store','_blank')">DM on Instagram</button>
     </div>
   </div>
 
   <script>
-    function showPopup() {
-      document.getElementById('buyPopup').style.display = 'block';
-    }
+    const buttons = document.querySelectorAll('.product-details button');
+    const popup = document.getElementById('popup');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        popup.style.display = 'flex';
+      });
+    });
+
     function closePopup() {
-      document.getElementById('buyPopup').style.display = 'none';
-    }
-    window.onclick = function(event) {
-      const popup = document.getElementById('buyPopup');
-      if (event.target == popup) {
-        popup.style.display = "none";
-      }
+      popup.style.display = 'none';
     }
   </script>
 </body>
