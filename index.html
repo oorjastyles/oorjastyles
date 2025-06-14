@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Oorja Styles</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
@@ -170,20 +170,29 @@
       font-weight: 700;
     }
 
-    .scroll-container {
+    .product-scroll-container {
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 40px;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .product-scroll {
       display: flex;
       gap: 20px;
-      overflow-x: auto;
-      padding-bottom: 20px;
+      width: max-content;
+      padding-bottom: 10px;
     }
 
     .product-card {
-      min-width: 260px;
+      min-width: 240px;
       background: #181818;
       padding: 20px;
       border-radius: 14px;
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      flex-shrink: 0;
     }
 
     .product-card img {
@@ -249,9 +258,6 @@
       padding: 60px 0;
     }
   </style>
-    <link rel="icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
   <div class="topbar">
@@ -278,33 +284,36 @@
   <main>
     <section class="hero" id="hero">
       <h1>Oorja Styles</h1>
-      <p>Wear Your VIbe, Spark Your Oorja</p>
+      <p>Wear Your Vibe, Spark Your Oorja</p>
       <a href="#collection">Explore Now</a>
     </section>
 
     <h2 class="section-title" id="collection">🔥 Trending Now</h2>
-<div class="scroll-container">
-  <div class="product-card">
-    <img src="devilish.png" alt="Tee">
-    <h3>Hellblaze Hero</h3>
-    <p>₹499</p>
-  </div>
-  <div class="product-card">
-    <img src="luffy.png" alt="tee">
-    <h3>Luffy Ascended</h3>
-    <p>₹499</p>
-  </div>
-  <div class="product-card">
-    <img src="CrimsonSaiyan.png" alt="Tee">
-    <h3>Crimson Saiyan</h3>
-    <p>₹499</p>
-  </div>
-  <div class="product-card">
-    <img src="NeonRonin.png" alt="Joggers">
-    <h3>Neon Ronin</h3>
-    <p>₹499</p>
-  </div>
-</div>
+    <div class="product-scroll-container" id="carousel">
+      <div class="product-scroll">
+        <div class="product-card">
+          <img src="devilish.png" alt="Tee">
+          <h3>Hellblaze Hero</h3>
+          <p>₹499</p>
+        </div>
+        <div class="product-card">
+          <img src="luffy.png" alt="tee">
+          <h3>Luffy Ascended</h3>
+          <p>₹499</p>
+        </div>
+        <div class="product-card">
+          <img src="CrimsonSaiyan.png" alt="Tee">
+          <h3>Crimson Saiyan</h3>
+          <p>₹499</p>
+        </div>
+        <div class="product-card">
+          <img src="NeonRonin.png" alt="Joggers">
+          <h3>Neon Ronin</h3>
+          <p>₹499</p>
+        </div>
+        <!-- You can duplicate more product cards here -->
+      </div>
+    </div>
 
     <div class="promo-banner" id="promo">
       🚨 Limited Offer: Buy 3 & Get 1 free — Only for the bold!
@@ -339,7 +348,25 @@
     function toggleSidebar() {
       document.getElementById('sidebar').classList.toggle('active');
     }
+
+    // Auto-scroll carousel
+    const carousel = document.getElementById("carousel");
+    let scrollAmount = 0;
+    let isHovered = false;
+
+    carousel.addEventListener("mouseenter", () => isHovered = true);
+    carousel.addEventListener("mouseleave", () => isHovered = false);
+
+    setInterval(() => {
+      if (!isHovered) {
+        scrollAmount += 2;
+        carousel.scrollLeft += 2;
+        if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
+          scrollAmount = 0;
+          carousel.scrollLeft = 0;
+        }
+      }
+    }, 30); // adjust speed here
   </script>
 </body>
 </html>
-
