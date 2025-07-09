@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Oorja Styles - Contact Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #f72585;
+      --secondary: #00f5d4;
+      --accent: #4361ee;
+      --dark: #0c0c1d;
+      --darker: #1a1a2e;
+      --light: #ddd;
+      --lighter: #fff;
+      --gray: #777;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--dark), var(--darker));
+      color: var(--lighter);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-size: 16px;
+    }
+
+    /* Enhanced Topbar */
+    .topbar {
+      width: 100%;
+      background: rgba(10, 10, 30, 0.65);
+      backdrop-filter: blur(12px);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1100;
+      transition: all 0.4s ease;
+    }
+
+    .topbar.scrolled {
+      padding: 0.5rem 1.5rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .topbar .brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--lighter);
+      display: flex;
+      align-items: center;
+      text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .topbar .brand:hover {
+      text-shadow: 0 0 15px var(--primary), 0 0 30px var(--primary);
+    }
+
+    /* Menu Toggle */
+    .menu-toggle {
+      display: none;
+      position: absolute;
+      top: 0.75rem;
+      left: 1rem;
+      z-index: 1200;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 0.25rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 0.5rem;
+    }
+
+    .menu-toggle div {
+      width: 1.5rem;
+      height: 0.1875rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle.active div:nth-child(1) {
+      transform: translateY(0.5rem) rotate(45deg);
+    }
+
+    .menu-toggle.active div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active div:nth-child(3) {
+      transform: translateY(-0.5rem) rotate(-45deg);
+    }
+
+    /* Enhanced Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 4.375rem;
+      left: 0;
+      height: calc(100% - 4.375rem);
+      width: 15rem;
+      background: rgba(20, 20, 40, 0.85);
+      backdrop-filter: blur(15px);
+      padding: 2.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+
+    .sidebar a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.5rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    .sidebar a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0.3125rem;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(0.625rem);
+      color: var(--secondary);
+    }
+
+    .sidebar a:hover::before {
+      transform: translateX(0);
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        width: 16.25rem;
+      }
+      .sidebar.active {
+        transform: translateX(0);
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      .topbar {
+        padding: 0.75rem 1.25rem 0.75rem 4.375rem;
+      }
+    }
+
+    main {
+      margin-left: 16.25rem;
+      padding: 7.5rem 1.5rem 3.75rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex: 1;
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        margin-left: 0;
+        padding: 7.5rem 1rem 2.5rem;
+      }
+    }
+
+    /* Contact Hero Section */
+    .contact-hero {
+      text-align: center;
+      padding: 3.75rem 1.5rem;
+      margin-bottom: 3.75rem;
+      background: linear-gradient(135deg, rgba(247, 37, 133, 0.15), rgba(0, 245, 212, 0.15));
+      border-radius: 1.5rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 1.25rem 3.125rem rgba(0, 245, 212, 0.2);
+      position: relative;
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.5) 90%);
+      z-index: 0;
+    }
+
+    .contact-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      font-family: 'Chakra Petch', sans-serif;
+      background: linear-gradient(to right, #ff3cac, var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.0625rem;
+      line-height: 1.1;
+    }
+
+    .contact-hero p {
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      color: var(--light);
+      margin-bottom: 1.25rem;
+    }
+
+    /* Contact Container */
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-bottom: 3.75rem;
+      justify-content: center;
+      width: 100%;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      flex: 1;
+      min-width: 45%;
+      max-width: 600px;
+      background: rgba(20, 20, 40, 0.6);
+      border-radius: 1.25rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.2);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-form::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 0.3125rem;
+      background: linear-gradient(to right, #ff3cac, var(--secondary));
+      z-index: 1;
+    }
+
+    .contact-form h2 {
+      font-size: clamp(1.5rem, 4vw, 1.8rem);
+      margin-bottom: 1.875rem;
+      color: var(--secondary);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.625rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5625rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.625rem;
+      font-weight: 600;
+      color: var(--light);
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-size: clamp(0.9rem, 3vw, 1rem);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: clamp(0.75rem, 2vw, 0.9375rem);
+      border: none;
+      border-radius: 0.75rem;
+      background: rgba(30, 30, 50, 0.5);
+      color: var(--lighter);
+      font-size: clamp(0.9rem, 3vw, 1rem);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0.625rem rgba(0, 245, 212, 0.3);
+    }
+
+    .contact-form button {
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      color: var(--lighter);
+      border: none;
+      padding: clamp(0.8rem, 2vw, 1rem);
+      font-size: clamp(1rem, 3vw, 1.1rem);
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      width: 100%;
+      font-weight: 700;
+      box-shadow: 0 0.5rem 1.25rem rgba(247, 37, 133, 0.4);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.625rem;
+    }
+
+    .contact-form button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, var(--accent), var(--secondary));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-0.3125rem);
+      box-shadow: 0 0.9375rem 1.875rem rgba(67, 97, 238, 0.5);
+    }
+
+    .contact-form button:hover::before {
+      opacity: 1;
+    }
+
+    /* Contact Details Section */
+    .contact-details {
+      flex: 1;
+      min-width: 45%;
+      max-width: 600px;
+      background: rgba(20, 20, 40, 0.6);
+      border-radius: 1.25rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.2);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-details::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 0.3125rem;
+      background: linear-gradient(to right, var(--accent), var(--secondary));
+      z-index: 1;
+    }
+
+    .contact-card {
+      background: rgba(30, 30, 50, 0.3);
+      border-radius: 1rem;
+      padding: 1.5625rem;
+      margin-bottom: 1.5625rem;
+      transition: all 0.3s ease;
+      border-left: 0.25rem solid var(--primary);
+    }
+
+    .contact-card:hover {
+      transform: translateX(0.625rem);
+      background: rgba(30, 30, 50, 0.5);
+      border-left: 0.25rem solid var(--secondary);
+    }
+
+    .contact-card h3 {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      margin-bottom: 0.9375rem;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .contact-card p {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      color: var(--light);
+      line-height: 1.7;
+      padding-left: 2.625rem;
+    }
+
+    .social-contact {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .social-contact a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(2.5rem, 8vw, 3.75rem);
+      height: clamp(2.5rem, 8vw, 3.75rem);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--lighter);
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+      transition: all 0.3s ease;
+    }
+
+    .social-contact a:hover {
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      transform: translateY(-0.5rem);
+    }
+
+    /* Enhanced Footer */
+    footer {
+      margin-top: 6.25rem;
+      background: rgba(10, 10, 30, 0.8);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 3.75rem 1.5rem 1.875rem;
+      text-align: center;
+      position: relative;
+      width: 100%;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3.125rem;
+      max-width: 1200px;
+      margin: 0 auto 2.5rem;
+      padding: 0 1.25rem;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 15.625rem;
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      margin-bottom: 1.5625rem;
+      color: var(--secondary);
+      position: relative;
+      padding-bottom: 0.625rem;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 3.125rem;
+      height: 0.1875rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 0.125rem;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 0.9375rem;
+    }
+
+    .footer-column ul li a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-size: clamp(0.8rem, 2.5vw, 1rem);
+    }
+
+    .footer-column ul li a:hover {
+      color: var(--secondary);
+      transform: translateX(0.3125rem);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(2.5rem, 6vw, 3.125rem);
+      height: clamp(2.5rem, 6vw, 3.125rem);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--lighter);
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      transform: translateY(-0.3125rem);
+    }
+
+    .copyright {
+      color: var(--gray);
+      font-size: clamp(0.8rem, 2.5vw, 1rem);
+      padding-top: 1.875rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Scroll to Top Button */
+    .scroll-top {
+      position: fixed;
+      bottom: 1.875rem;
+      right: 1.875rem;
+      width: clamp(2.5rem, 6vw, 3.125rem);
+      height: clamp(2.5rem, 6vw, 3.125rem);
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      color: var(--lighter);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(1.25rem);
+      transition: all 0.4s ease;
+      z-index: 100;
+      box-shadow: 0 0.3125rem 0.9375rem rgba(247, 37, 133, 0.4);
+    }
+
+    .scroll-top.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-0.3125rem);
+      box-shadow: 0 0.5rem 1.25rem rgba(247, 37, 133, 0.6);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      main {
+        padding: 7.5rem 1rem 3.75rem;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .contact-form,
+      .contact-details {
+        min-width: 100%;
+      }
+      
+      .contact-container {
+        gap: 1.5rem;
+      }
+      
+      .footer-column {
+        min-width: 40%;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .contact-hero {
+        padding: 2.5rem 1rem;
+        margin-bottom: 2.5rem;
+      }
+      
+      .contact-form,
+      .contact-details {
+        padding: 1.5rem;
+      }
+      
+      .footer-column {
+        min-width: 100%;
+        text-align: center;
+      }
+      
+      .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .footer-column ul li a {
+        justify-content: center;
+      }
+      
+      .social-icons {
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .topbar .brand {
+        font-size: 1.5rem;
+      }
+      
+      .contact-hero {
+        padding: 1.5rem 1rem;
+        border-radius: 1rem;
+      }
+      
+      .contact-form,
+      .contact-details {
+        padding: 1.25rem;
+        border-radius: 1rem;
+      }
+      
+      .contact-card {
+        padding: 1rem;
+      }
+      
+      .contact-card p {
+        padding-left: 0;
+      }
+      
+      footer {
+        padding: 2.5rem 1rem 1.25rem;
+      }
+      
+      .scroll-top {
+        bottom: 1rem;
+        right: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar" id="topbar">
+    <div class="brand">
+      <i class="fas fa-bolt"></i>
+      Oorja Styles
+    </div>
+  </div>
+
+  <div class="menu-toggle" id="menuToggle" onclick="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <nav class="sidebar" id="sidebar">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="products.html"><i class="fas fa-tshirt"></i> Collection</a>
+    <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+    <a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact Us</a>
+  </nav>
+
+  <main>
+    <section class="contact-hero">
+      <div class="contact-hero-content">
+        <h1>📞 Let's Talk 💬</h1>
+        <p>Got questions? Want to collab? Just wanna say what's up? Slide into our DMs!</p>
+      </div>
+    </section>
+
+    <div class="contact-container">
+      <div class="contact-form">
+        <h2><i class="fas fa-paper-plane"></i> Send Us a Message</h2>
+        <form action="https://formspree.io/f/mvgryneq" method="POST">
+          <div class="form-group">
+            <label for="name"><i class="fas fa-user"></i> Your Name</label>
+            <input type="text" name="name" id="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email"><i class="fas fa-envelope"></i> Your Email</label>
+            <input type="email" name="email" id="email" required />
+          </div>
+          <div class="form-group">
+            <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+            <input type="text" name="subject" id="subject" required />
+          </div>
+          <div class="form-group">
+            <label for="message"><i class="fas fa-comment"></i> Your Message</label>
+            <textarea name="message" id="message" rows="6" required></textarea>
+          </div>
+          <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
+
+      <div class="contact-details">
+        <div class="contact-card">
+          <h3><i class="fas fa-map-marker-alt"></i> Our Location</h3>
+          <p>123 Streetwear Avenue<br>Mumbai, India 400001</p>
+        </div>
+        
+        <div class="contact-card">
+          <h3><i class="fas fa-phone"></i> Call Us</h3>
+          <p>+91 98765 43210<br>Mon-Sat: 10AM - 7PM</p>
+        </div>
+        
+        <div class="contact-card">
+          <h3><i class="fas fa-envelope"></i> Email Us</h3>
+          <p>support@oorjastyles.com<br>callabs@oorjastyles.com</p>
+        </div>
+        
+        <div class="social-contact">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Oorja Styles</h3>
+          <p>Bringing you the most unique and vibrant streetwear inspired by anime, gaming, and urban culture.</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Collection</a></li>
+            <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Customer Support</h3>
+          <ul>
+            <li><a href="#"><i class="fas fa-phone"></i> +91 98765 43210</a></li>
+            <li><a href="#"><i class="fas fa-envelope"></i> support@oorjastyles.com</a></li>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Mumbai, India</a></li>
+            <li><a href="#"><i class="fas fa-clock"></i> Mon-Sat: 10AM - 7PM</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        &copy; 2025 Oorja Styles. All Rights Reserved.
+      </div>
+    </footer>
+  </main>
+
+  <!-- Scroll to Top Button -->
+  <div class="scroll-top" id="scrollTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script>
+    // Toggle sidebar
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      const menuToggle = document.getElementById("menuToggle");
+      sidebar.classList.toggle("active");
+      menuToggle.classList.toggle("active");
+      
+      // Close sidebar when clicking outside
+      if (sidebar.classList.contains("active")) {
+        document.addEventListener('click', closeSidebarOnClickOutside);
+      } else {
+        document.removeEventListener('click', closeSidebarOnClickOutside);
+      }
+    }
+    
+    function closeSidebarOnClickOutside(event) {
+      const sidebar = document.getElementById("sidebar");
+      const menuToggle = document.getElementById("menuToggle");
+      
+      if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+        sidebar.classList.remove("active");
+        menuToggle.classList.remove("active");
+        document.removeEventListener('click', closeSidebarOnClickOutside);
+      }
+    }
+
+    // Scroll to top functionality
+    const scrollTopBtn = document.getElementById("scrollTop");
+    
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add("show");
+        document.getElementById("topbar").classList.add("scrolled");
+      } else {
+        scrollTopBtn.classList.remove("show");
+        document.getElementById("topbar").classList.remove("scrolled");
+      }
+    });
+    
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+
+    // Initialize page
+    document.addEventListener("DOMContentLoaded", () => {
+      // Add CSS for animations
+      const style = document.createElement("style");
+      style.textContent = `
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .form-group, .contact-card {
+          animation: fadeIn 0.6s ease forwards;
+        }
+        .form-group:nth-child(1) { animation-delay: 0.2s; }
+        .form-group:nth-child(2) { animation-delay: 0.4s; }
+        .form-group:nth-child(3) { animation-delay: 0.6s; }
+        .form-group:nth-child(4) { animation-delay: 0.8s; }
+        .form-group:nth-child(5) { animation-delay: 1.0s; }
+        .contact-card:nth-child(1) { animation-delay: 0.3s; }
+        .contact-card:nth-child(2) { animation-delay: 0.5s; }
+        .contact-card:nth-child(3) { animation-delay: 0.7s; }
+      `;
+      document.head.appendChild(style);
+    });
+  </script>
+</body>
+</html>
