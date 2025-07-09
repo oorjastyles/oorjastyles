@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Oorja Styles - Enhanced</title>
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -593,7 +592,29 @@
       margin: 0 auto;
     }
 
+    
+    .hero a.hero-btn {
+      background: linear-gradient(to right, #f72585, #4361ee);
+      color: #fff;
+      padding: 16px 36px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .hero a.hero-btn:hover {
+      transform: translateY(-4px);
+      background: linear-gradient(to right, #00f5d4, #4361ee);
+      box-shadow: 0 12px 30px rgba(0, 245, 212, 0.4);
+    }
+
     /* Scroll to Top Button */
+    
     .scroll-top {
       position: fixed;
       bottom: 30px;
@@ -654,13 +675,15 @@
   </nav>
 
   <main>
-    <section class="hero" id="hero">
-      <div class="hero-content">
-        <h1>Oorja Styles 🧿</h1>
-        <p>Wear Your Vibe, Spark Your Oorja</p>
-        <a href="products.html">Explore Collection</a>
-      </div>
-    </section>
+    
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <h1>Oorja Styles 🧿</h1>
+    <p>Wear Your Vibe, Spark Your Oorja</p>
+    <a href="products.html" class="hero-btn">Explore Collection</a>
+  </div>
+</section>
+
 
     <h2 class="section-title" id="collection">🔥 Trending Fits</h2>
     <div class="grid-container">
@@ -670,9 +693,9 @@
         <p>₹499</p>
       </div>
       <div class="product-card">
-        <img src="assets/totes/totebag1.jpeg" alt="The Curious Quartet" />
-        <h3>The Curious Quartet</h3>
-        <p>₹399</p>
+        <img src="assets/tees/CrimsonSaiyan.png" alt="Crimson Saiyan Tee" />
+        <h3>Crimson Saiyan</h3>
+        <p>₹499</p>
       </div>
       <div class="product-card">
         <img src="assets/tees/NeonRonin.png" alt="Neon Ronin Tee" />
